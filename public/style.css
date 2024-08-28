@@ -1,0 +1,238 @@
+/* Resetting margins and paddings for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+}
+
+/* Main container for the app */
+.app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Screen styles - join and chat */
+.app > .screen {
+    display: none;
+}
+
+.app > .screen.active {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Form styling for join screen */
+.screen .form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.screen h2 {
+    margin-bottom: 20px;
+    font-size: 30px;
+    color: #fff;
+    border-bottom: 4px solid #fff;
+    padding: 5px 0;
+    display: inline-block;
+}
+
+.screen .form-input {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.screen .form-input label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #ddd;
+}
+
+.screen .form-input input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.screen .form-input button {
+    width: 100%;
+    padding: 12px;
+    background-color: #6c5ce7;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.screen .form-input button:hover {
+    background-color: #a29bfe;
+}
+
+/* Chat screen header */
+.chat-screen .header {
+    background: #2d3436;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chat-screen .header .logo {
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.chat-screen .header button {
+    padding: 8px 15px;
+    border: 1px solid #fff;
+    background: transparent;
+    color: #fff;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.chat-screen .header button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Messages container */
+.chat-screen .messages {
+    width: 100%;
+    height: calc(100% - 100px);
+    background: rgba(0, 0, 0, 0.05);
+    overflow-y: auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #333;
+}
+
+.chat-screen .messages .message {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.chat-screen .messages .message.my-message {
+    justify-content: flex-end;
+}
+
+.chat-screen .messages .message.other-message {
+    justify-content: flex-start;
+}
+
+.chat-screen .messages .message > div {
+    max-width: 80%;
+    background: #fff;
+    box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.05);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.chat-screen .messages .message .name {
+    font-size: 13px; /* Smaller font size for the name */
+    color: #555;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.chat-screen .messages .message .text {
+    font-size: 14px; /* Slightly smaller text size for the message */
+    word-wrap: break-word;
+    color: #333;
+}
+
+.chat-screen .messages .update {
+    text-align: center;
+    padding: 10px;
+    font-style: italic;
+    color: #bbb;
+    font-size: 14px;
+}
+
+/* Typing area */
+.chat-screen .typebox {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    padding: 10px;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+    background-color: #2d3436;
+}
+
+.chat-screen .typebox input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    background: #fff;
+    color: #333;
+}
+
+.chat-screen .typebox button {
+    width: 80px;
+    margin-left: 10px;
+    background: #6c5ce7;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chat-screen .typebox button:hover {
+    background-color: #a29bfe;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
